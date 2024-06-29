@@ -8,13 +8,13 @@ common:
   # 推送通道
   push_channel:
     # 是否在项目启动时，给各通道发送一条测试消息 true/false
-    send_test_msg_when_start: false
+    send_test_msg_when_start: true
 
 query_task:
   # 任务名称，可自定义
   - name: 任务_bilibili
     # 是否启用 true/false
-    enable: false
+    enable: true
     # 任务类型，bilibili/weibo/xhs/douyin
     type: bilibili
     # 查询间隔，单位秒，不建议设置太频繁
@@ -25,189 +25,61 @@ query_task:
     end_time: "23:59"
     # 推送通道名称，对应 push_channel 中的 name
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     # 是否启用动态检测 true/false
-    enable_dynamic_check: true
+    enable_dynamic_check: false
     # 是否启用直播检测 true/false
     enable_living_check: true
     # 用户 uid 列表，参考 https://space.bilibili.com/1795147802
     uid_list:
-      - 1795147802
-      - 1669777785
-      - 1778026586
-      - 1875044092
-      - 1811071010
-      - 2018113152
+      - 406986743
+      - 22902192
     # 如果请求提示 -352, 可以填入下面两项之一, 建议使用 payload 自动获取buvid3
     # cookie，可以一定程度防ban，建议用小号的，貌似无痕窗口不登录时拿到的cookie也能用，优先级高于自动获取buvid3
     cookie: ""
     # 浏览器指纹，取自于 /x/internal/gaia-gateway/ExClimbWuzhi 接口的body，需要填入的是payload参数的value，用于自动获取并激活buvid3
-    payload: ""
-  - name: 任务_weibo
-    enable: false
-    type: weibo
-    intervals_second: 60
-    begin_time: "00:00"
-    end_time: "23:59"
-    target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
-    enable_dynamic_check: true
-    # 用户 uid 列表，参考 https://weibo.com/u/7198559139
-    uid_list:
-      - 7198559139
-      - 1765893783
-  - name: 任务_xhs
-    enable: false
-    type: xhs
-    intervals_second: 300
-    begin_time: "00:00"
-    end_time: "23:59"
-    target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
-    enable_dynamic_check: true
-    # 用户 profile_id 列表，参考 https://www.xiaohongshu.com/user/profile/52d8c541b4c4d60e6c867480
-    profile_id_list:
-      - 52d8c541b4c4d60e6c867480
-      - 5bf64788aa4b0a000114b879
+    payload: {"5062":1719628336643,"39c8":"333.1365.fp.risk","920b":"0","df35":"C7EF01D2-3E1E-5C8D-219D-A87B6E638A4B45613infoc","03bf":"https://t.bilibili.com/","3c43":{"2673":0,"5766":30,"6527":0,"7003":1,"807e":1,"b8ce":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","641c":0,"07a4":"en","1c57":8,"0bd0":8,"748e":[800,1280],"d61f":[775,1280],"fc9d":-60,"6aa9":"Europe/London","75b8":1,"3b21":1,"8a1c":0,"d52f":"not available","adca":"MacIntel","80c9":[["PDF Viewer","Portable Document Format",[["application/pdf","pdf"],["text/pdf","pdf"]]],["Chrome PDF Viewer","Portable Document Format",[["application/pdf","pdf"],["text/pdf","pdf"]]],["Chromium PDF Viewer","Portable Document Format",[["application/pdf","pdf"],["text/pdf","pdf"]]],["Microsoft Edge PDF Viewer","Portable Document Format",[["application/pdf","pdf"],["text/pdf","pdf"]]],["WebKit built-in PDF","Portable Document Format",[["application/pdf","pdf"],["text/pdf","pdf"]]]],"13ab":"7wAAAABJRU5ErkJggg==","bfe9":"mgQDYKAKxsrCZRFLCvwP8Bqjz+poigxo4AAAAASUVORK5CYII=","a3c1":["extensions:ANGLE_instanced_arrays;EXT_blend_minmax;EXT_clip_control;EXT_color_buffer_half_float;EXT_depth_clamp;EXT_disjoint_timer_query;EXT_float_blend;EXT_frag_depth;EXT_polygon_offset_clamp;EXT_shader_texture_lod;EXT_texture_compression_bptc;EXT_texture_compression_rgtc;EXT_texture_filter_anisotropic;EXT_texture_mirror_clamp_to_edge;EXT_sRGB;KHR_parallel_shader_compile;OES_element_index_uint;OES_fbo_render_mipmap;OES_standard_derivatives;OES_texture_float;OES_texture_float_linear;OES_texture_half_float;OES_texture_half_float_linear;OES_vertex_array_object;WEBGL_blend_func_extended;WEBGL_color_buffer_float;WEBGL_compressed_texture_astc;WEBGL_compressed_texture_etc;WEBGL_compressed_texture_etc1;WEBGL_compressed_texture_pvrtc;WEBGL_compressed_texture_s3tc;WEBGL_compressed_texture_s3tc_srgb;WEBGL_debug_renderer_info;WEBGL_debug_shaders;WEBGL_depth_texture;WEBGL_draw_buffers;WEBGL_lose_context;WEBGL_multi_draw;WEBGL_polygon_mode","webgl aliased line width range:[1, 1]","webgl aliased point size range:[1, 511]","webgl alpha bits:8","webgl antialiasing:yes","webgl blue bits:8","webgl depth bits:24","webgl green bits:8","webgl max anisotropy:16","webgl max combined texture image units:32","webgl max cube map texture size:16384","webgl max fragment uniform vectors:1024","webgl max render buffer size:16384","webgl max texture image units:16","webgl max texture size:16384","webgl max varying vectors:30","webgl max vertex attribs:16","webgl max vertex texture image units:16","webgl max vertex uniform vectors:1024","webgl max viewport dims:[16384, 16384]","webgl red bits:8","webgl renderer:WebKit WebGL","webgl shading language version:WebGL GLSL ES 1.0 (OpenGL ES GLSL ES 1.0 Chromium)","webgl stencil bits:0","webgl vendor:WebKit","webgl version:WebGL 1.0 (OpenGL ES 2.0 Chromium)","webgl unmasked vendor:Google Inc. (Apple)","webgl unmasked renderer:ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)","webgl vertex shader high float precision:23","webgl vertex shader high float precision rangeMin:127","webgl vertex shader high float precision rangeMax:127","webgl vertex shader medium float precision:23","webgl vertex shader medium float precision rangeMin:127","webgl vertex shader medium float precision rangeMax:127","webgl vertex shader low float precision:23","webgl vertex shader low float precision rangeMin:127","webgl vertex shader low float precision rangeMax:127","webgl fragment shader high float precision:23","webgl fragment shader high float precision rangeMin:127","webgl fragment shader high float precision rangeMax:127","webgl fragment shader medium float precision:23","webgl fragment shader medium float precision rangeMin:127","webgl fragment shader medium float precision rangeMax:127","webgl fragment shader low float precision:23","webgl fragment shader low float precision rangeMin:127","webgl fragment shader low float precision rangeMax:127","webgl vertex shader high int precision:0","webgl vertex shader high int precision rangeMin:31","webgl vertex shader high int precision rangeMax:30","webgl vertex shader medium int precision:0","webgl vertex shader medium int precision rangeMin:31","webgl vertex shader medium int precision rangeMax:30","webgl vertex shader low int precision:0","webgl vertex shader low int precision rangeMin:31","webgl vertex shader low int precision rangeMax:30","webgl fragment shader high int precision:0","webgl fragment shader high int precision rangeMin:31","webgl fragment shader high int precision rangeMax:30","webgl fragment shader medium int precision:0","webgl fragment shader medium int precision rangeMin:31","webgl fragment shader medium int precision rangeMax:30","webgl fragment shader low int precision:0","webgl fragment shader low int precision rangeMin:31","webgl fragment shader low int precision rangeMax:30"],"6bc5":"Google Inc. (Apple)~ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)","ed31":0,"72bd":0,"097b":0,"52cd":[0,0,0],"a658":["Andale Mono","Arial","Arial Black","Arial Hebrew","Arial Narrow","Arial Rounded MT Bold","Arial Unicode MS","Comic Sans MS","Courier","Courier New","Geneva","Georgia","Helvetica","Helvetica Neue","Impact","LUCIDA GRANDE","Microsoft Sans Serif","Monaco","Palatino","Tahoma","Times","Times New Roman","Trebuchet MS","Verdana","Wingdings","Wingdings 2","Wingdings 3"],"d02f":"124.04346607114712"}}
   - name: 任务_douyin
-    enable: false
+    enable: true
     type: douyin
     intervals_second: 30
     begin_time: "00:00"
     end_time: "23:59"
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
-    enable_dynamic_check: true
+      - 推送通道_Bark
+    enable_dynamic_check: false
     # 签名服务器url，参考 https://github.com/coder-fly/douyin-signature
     signature_server_url: http://ip:port
     # 用户名列表，必填（接口现在不返回作者信息了，重新获取还挺麻烦的，自己填上凑合用先）
     username_list:
-      - 嘉然今天吃什么
-      - 七海Nana7mi
+      # - 大蛇丸
     # 作者sec_uid列表，参考 https://www.douyin.com/user/MS4wLjABAAAA5ZrIrbgva_HMeHuNn64goOD2XYnk4ItSypgRHlbSh1c
     sec_uid_list:
-      - MS4wLjABAAAA5ZrIrbgva_HMeHuNn64goOD2XYnk4ItSypgRHlbSh1c
-      - MS4wLjABAAAAGeiluJjizroSmPhcNdlsS0b7M0rxi5ygfrtqdByE0FCYi__j0fS_E52uGaF7ujpn
+      # - MS4wLjABAAAA_5ttsDg-sAePrNQILFlVxwU8m0Srn28FPnM6oMGplZE
     enable_living_check: true
     # 抖音号列表，用于检测开播状态，如果不开启直播检测可以不填，现已支持纯数字的抖音号
     douyin_id_list:
-      - ASOULjiaran
-      - Nana7mi0715
+      - 29879823171
   - name: 任务_douyu
-    enable: false
+    enable: true
     type: douyu
     intervals_second: 300
     begin_time: "00:00"
     end_time: "23:59"
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     enable_living_check: true
     # 直播间号列表，用于检测开播状态，如果不开启直播检测可以不填
     room_id_list:
-      - 307876
       - 12306
-  - name: 任务_huya
-    enable: false
-    type: huya
-    intervals_second: 300
-    begin_time: "00:00"
-    end_time: "23:59"
-    target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
-    enable_living_check: true
-    # 直播间号列表，用于检测开播状态，如果不开启直播检测可以不填
-    room_id_list:
-      - "lpl"
-      - "880201"
+      - 52
+      - 2561707
+      - 8256300
 
 push_channel:
   # 通道名称，唯一，可自定义不要纯数字，对应 query_task 中的 target_push_name_list
-  - name: 推送通道_Server酱_Turbo
-    # 是否启用 true/false
-    enable: false
-    # 通道类型，serverChan_turbo/wecom_apps/dingtalk_bot/feishu_apps/feishu_bot/bark/webhook
-    type: serverChan_turbo
-    # Server酱_Turbo推送服务，如果启用该推送，必须填入，获取参考 https://sct.ftqq.com
-    send_key:
-  - name: 推送通道_企业微信应用
-    enable: false
-    type: wecom_apps
-    # 企业id，如果启动该推送则必填
-    corp_id:
-    # 应用id，如果启动该推送则必填
-    agent_id:
-    # 应用Secret，如果启动该推送则必填
-    corp_secret:
-  - name: 推送通道_企业微信机器人
-    enable: false
-    type: wecom_bot
-    # 机器人key，如果启动该推送则必填
-    key:
-  - name: 推送通道_钉钉机器人
-    enable: false
-    type: dingtalk_bot
-    # 机器人秘钥，如果启动该推送则必填
-    access_token:
-  - name: 推送通道_飞书自建应用
-    enable: false
-    type: feishu_apps
-    # 飞书自建应用的app_id，如果启动该推送则必填
-    app_id:
-    # 飞书自建应用的app_secret，如果启动该推送则必填
-    app_secret:
-    # 消息接收者id类型 open_id/user_id/union_id/email/chat_id，详见 https://open.feishu.cn/document/server-docs/im-v1/message/create
-    receive_id_type:
-    # 消息接收者的ID，ID类型应与查询参数receive_id_type 对应
-    receive_id:
-  - name: 推送通道_飞书机器人
-    enable: false
-    type: feishu_bot
-    # 飞书机器人webhook key，如果启动该推送则必填
-    webhook_key:
-  - name: 推送通道_Telegram机器人
-    enable: false
-    type: telegram_bot
-    # Telegram 机器人的token，如果启动该推送则必填
-    api_token:
-    # Telegram 机器人的chat_id，如果启动该推送则必填，详见 https://api.telegram.org/bot<YOUR_API_TOKEN>/getUpdates
-    chat_id:
   - name: 推送通道_Bark
-    enable: false
+    enable: true
     type: bark
     # iOS 设备专用，Bark app 的key，如果启动该推送则必填
-    key:
-  - name: 推送通道_Gotify
-    enable: false
-    type: gotify
-    # Gotify 服务器地址，如果启动该推送则必填，例如 https://push.example.com/message?token=<apptoken>
-    web_server_url:
-  - name: 推送通道_Webhook
-    enable: false
-    type: webhook
-    # Webhook 地址，如果启动该推送则必填，标题和内容使用 {{title}} 和 {{content}} 占位符
-    webhook_url: https://xxx.com?title={{title}}&content={{content}}
-    # 请求方法，GET/POST
-    request_method: GET
-  - name: 推送通道_Email
-    enable: false
-    type: email
-    # SMTP 服务器地址，如果启动该推送则必填，例如 smtp.qq.com
-    smtp_host:
-    # SMTP 服务器端口，如果启动该推送则必填，例如 465
-    smtp_port:
-    # 是否启用SSL，默认true
-    smtp_ssl: true
-    # 是否启用TSL，默认false
-    smtp_tls: false
-    # 发件人邮箱，如果启动该推送则必填
-    sender_email:
-    # 发件人密码，如果启动该推送则必填，QQ邮箱需要使用授权码，参考 https://service.mail.qq.com/detail/0/75
-    sender_password:
-    # 收件人地址，如果启动该推送则必填，多个地址用英文逗号分隔
-    receiver_email:
+    key: ELV6WywhCobjUuxTojNuzL
