@@ -74,7 +74,6 @@ query_task:
       - 12306
       - 52
       - 2561707
-      - 8256300
 
 push_channel:
   # 通道名称，唯一，可自定义不要纯数字，对应 query_task 中的 target_push_name_list
