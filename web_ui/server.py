@@ -19,4 +19,4 @@ def index():
 def start_web_ui(tasks: List[QueryTask]):
     global Tasks
     Tasks=tasks
-    app.run(debug=False,port=5001)
+    app.run(debug=False,host='0.0.0.0',port=5001)
