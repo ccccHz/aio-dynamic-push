@@ -74,9 +74,9 @@ def main():
     server_thread.start()
     query_task_thread.start()
     
-    # 主线程可以继续运行其他逻辑，或者简单的持续运行
-    while True:
-        pass
+    server_thread.join()
+    query_task_thread.join()
+    
     # # 启动web UI
     # server.start_web_ui(query_task_config_list)
     # # 初始化查询任务
