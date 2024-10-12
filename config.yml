@@ -32,8 +32,7 @@ query_task:
     enable_living_check: true
     # 用户 uid 列表，参考 https://space.bilibili.com/1795147802
     uid_list:
-      - 406986743
-      - 22902192
+      - 406986743 # zonjian
     # 如果请求提示 -352, 可以填入下面两项之一, 建议使用 payload 自动获取buvid3
     # cookie，可以一定程度防ban，建议用小号的，貌似无痕窗口不登录时拿到的cookie也能用，优先级高于自动获取buvid3
     cookie: ""
