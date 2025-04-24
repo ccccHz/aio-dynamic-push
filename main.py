@@ -1,4 +1,6 @@
+import threading
 import time
+from typing import List
 
 import schedule
 
@@ -6,6 +8,7 @@ import push_channel
 import query_task
 from common.config import global_config
 from common.logger import log
+from web_ui import server
 
 
 def init_push_channel(push_channel_config_list: list):
@@ -32,15 +35,29 @@ def init_push_channel_test(common_config: dict):
                          extend_data={})
 
 
-def init_query_task(query_task_config_list: list):
+class TaskStore:
+    def __init__(self):
+        self._tasks: List[query_task.QueryTask] = []
+        self._lock = threading.Lock()
+
+    def add(self, task: query_task.QueryTask):
+        with self._lock:
+            self._tasks.append(task)
+
+    def all(self) -> List[query_task.QueryTask]:
+        with self._lock:
+            return list(self._tasks)  # 返回副本，避免被外部改动
+
+def init_query_task(query_task_config_list: list, taskStore: TaskStore):
     log.info("初始化查询任务")
     for config in query_task_config_list:
         if config.get('enable', False):
-            current_query = query_task.get_query_task(config).query
-            schedule.every(config.get("intervals_second", 60)).seconds.do(current_query)
+            task = query_task.get_query_task(config)
+            schedule.every(config.get("intervals_second", 60)).seconds.do(task.query)
             log.info(f"初始化查询任务: {config.get('name', '')}，任务类型: {config.get('type', None)}")
             # 先执行一次
-            current_query()
+            task.query()
+            taskStore.add(task)
 
     while True:
         schedule.run_pending()
@@ -48,6 +65,7 @@ def init_query_task(query_task_config_list: list):
 
 
 def main():
+    taskStore = TaskStore()
     common_config = global_config.get_common_config()
     query_task_config_list = global_config.get_query_task_config()
     push_channel_config_list = global_config.get_push_channel_config()
@@ -55,9 +73,21 @@ def main():
     init_push_channel(push_channel_config_list)
     # 初始化推送通道测试
     init_push_channel_test(common_config)
-    # 初始化查询任务
-    init_query_task(query_task_config_list)
-
+        # 创建线程
+    server_thread = threading.Thread(target=lambda: server.start_web_ui(taskStore))
+    query_task_thread = threading.Thread(target=lambda: init_query_task(query_task_config_list,taskStore))
+    
+    # 设置为守护线程，这样主程序退出时，线程也会被强制退出
+    server_thread.daemon = True
+    query_task_thread.daemon = True
+    
+    # 启动线程
+    server_thread.start()
+    query_task_thread.start()
+    
+    server_thread.join()
+    query_task_thread.join()
+ 
 
 if __name__ == '__main__':
     main()

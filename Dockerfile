@@ -11,4 +11,6 @@ RUN apk add --no-cache bash \
     && pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && chmod +x entrypoint.sh
 
+EXPOSE 5001
+
 ENTRYPOINT ["./entrypoint.sh"]

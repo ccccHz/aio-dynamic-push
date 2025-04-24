@@ -57,7 +57,10 @@ class QueryDouyu(QueryTask):
             except Exception:
                 log.error(f"【斗鱼-查询直播状态-{self.name}】头像获取发生错误，room_id：{room_id}")
 
-            show_status = room_info['show_status']
+            show_status = room_info['show_status'] # 1: 在线 2: 未直播 10: 直播
+            videoLoop = room_info.get('videoLoop',0) # 1: 录播 0: 非录播
+            if show_status == 1 and videoLoop == 0:
+                show_status = 10
 
             if self.living_status_dict.get(room_id, None) is None:
                 self.living_status_dict[room_id] = show_status
@@ -67,7 +70,7 @@ class QueryDouyu(QueryTask):
             if self.living_status_dict.get(room_id, None) != show_status:
                 self.living_status_dict[room_id] = show_status
 
-                if show_status == 1:
+                if show_status == 10 :
                     room_name = room_info.get('room_name')
                     room_pic = room_info.get('room_pic')
                     log.info(f"【斗鱼-查询直播状态-{self.name}】【{username}】开播了，准备推送：{room_name}")
