@@ -8,13 +8,13 @@ common:
   # 推送通道
   push_channel:
     # 是否在项目启动时，给各通道发送一条测试消息 true/false
-    send_test_msg_when_start: false
+    send_test_msg_when_start: true
 
 query_task:
   # 任务名称，可自定义
   - name: 任务_bilibili
     # 是否启用 true/false
-    enable: false
+    enable: true
     # 任务类型，bilibili/weibo/xhs/douyin
     type: bilibili
     # 查询间隔，单位秒，不建议设置太频繁
@@ -28,24 +28,19 @@ query_task:
       - 推送通道_企业微信应用
       - 推送通道_钉钉机器人
     # 是否启用动态检测 true/false
-    enable_dynamic_check: true
+    enable_dynamic_check: false
     # 是否启用直播检测 true/false
     enable_living_check: true
     # 用户 uid 列表，参考 https://space.bilibili.com/1795147802
-    uid_list:
-      - 1795147802
-      - 1669777785
-      - 1778026586
-      - 1875044092
-      - 1811071010
-      - 2018113152
+    uid_list: ${bilibili_uid_list}
+      
     # 是否跳过提醒"转发"类型的动态 true/false
     skip_forward: true
     # 如果请求提示 -352, 可以填入下面两项之一, 建议使用 payload 自动获取buvid3
     # cookie，可以一定程度防ban，建议用小号的，貌似无痕窗口不登录时拿到的cookie也能用，优先级高于自动获取buvid3
     cookie: ""
     # 浏览器指纹，取自于 /x/internal/gaia-gateway/ExClimbWuzhi 接口的body，需要填入的是payload参数的value，用于自动获取并激活buvid3
-    payload: ""
+    payload: ${BILIBILI_PAYLOAD_FILE}
   - name: 任务_weibo
     enable: false
     type: weibo
@@ -102,7 +97,7 @@ query_task:
       - ASOULjiaran
       - Nana7mi0715
   - name: 任务_douyu
-    enable: false
+    enable: true
     type: douyu
     intervals_second: 300
     begin_time: "00:00"
@@ -112,9 +107,7 @@ query_task:
       - 推送通道_钉钉机器人
     enable_living_check: true
     # 直播间号列表，用于检测开播状态，如果不开启直播检测可以不填
-    room_id_list:
-      - 307876
-      - 12306
+    room_id_list: ${douyu_room_id_list}
   - name: 任务_huya
     enable: false
     type: huya
@@ -203,10 +196,10 @@ push_channel:
           - "子频道21"
           - "子频道22"
   - name: 推送通道_Bark
-    enable: false
+    enable: true
     type: bark
     # iOS 设备专用，Bark app 的key，如果启动该推送则必填
-    key:
+    key: ${bark_key}
   - name: 推送通道_Gotify
     enable: false
     type: gotify
