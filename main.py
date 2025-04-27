@@ -48,7 +48,7 @@ class TaskStore:
         with self._lock:
             return list(self._tasks)  # 返回副本，避免被外部改动
 
-def init_query_task(query_task_config_list: list, taskStore: TaskStore):
+def init_query_task(query_task_config_list: list):
     log.info("初始化查询任务")
     for config in query_task_config_list:
         if config.get('enable', False):
@@ -64,8 +64,9 @@ def init_query_task(query_task_config_list: list, taskStore: TaskStore):
         time.sleep(1)
 
 
+taskStore = TaskStore()
+
 def main():
-    taskStore = TaskStore()
     common_config = global_config.get_common_config()
     query_task_config_list = global_config.get_query_task_config()
     push_channel_config_list = global_config.get_push_channel_config()
@@ -75,7 +76,7 @@ def main():
     init_push_channel_test(common_config)
         # 创建线程
     server_thread = threading.Thread(target=lambda: server.start_web_ui(taskStore))
-    query_task_thread = threading.Thread(target=lambda: init_query_task(query_task_config_list,taskStore))
+    query_task_thread = threading.Thread(target=lambda: init_query_task(query_task_config_list))
     
     # 设置为守护线程，这样主程序退出时，线程也会被强制退出
     server_thread.daemon = True
