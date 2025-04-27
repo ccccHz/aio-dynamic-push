@@ -25,8 +25,7 @@ query_task:
     end_time: "23:59"
     # 推送通道名称，对应 push_channel 中的 name
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     # 是否启用动态检测 true/false
     enable_dynamic_check: false
     # 是否启用直播检测 true/false
@@ -48,8 +47,7 @@ query_task:
     begin_time: "00:00"
     end_time: "23:59"
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     enable_dynamic_check: true
     # 用户 uid 列表，参考 https://weibo.com/u/7198559139
     uid_list:
@@ -64,8 +62,7 @@ query_task:
     begin_time: "00:00"
     end_time: "23:59"
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     enable_dynamic_check: true
     # 用户 profile_id 列表，参考 https://www.xiaohongshu.com/user/profile/52d8c541b4c4d60e6c867480
     profile_id_list:
@@ -78,8 +75,7 @@ query_task:
     begin_time: "00:00"
     end_time: "23:59"
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     enable_dynamic_check: false # 抖音动态监测目前坏了，还没修好
     # 签名服务器url，参考 https://github.com/coder-fly/douyin-signature
     signature_server_url: http://ip:port
@@ -103,8 +99,7 @@ query_task:
     begin_time: "00:00"
     end_time: "23:59"
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     enable_living_check: true
     # 直播间号列表，用于检测开播状态，如果不开启直播检测可以不填
     room_id_list: ${douyu_room_id_list}
@@ -115,8 +110,7 @@ query_task:
     begin_time: "00:00"
     end_time: "23:59"
     target_push_name_list:
-      - 推送通道_企业微信应用
-      - 推送通道_钉钉机器人
+      - 推送通道_Bark
     enable_living_check: true
     # 直播间号列表，用于检测开播状态，如果不开启直播检测可以不填
     room_id_list:
