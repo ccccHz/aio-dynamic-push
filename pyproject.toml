@@ -12,6 +12,7 @@ dependencies = [
     "requests-toolbelt==1.0.0",
     "schedule==1.2.1",
     "urllib3==1.26.9",
+    "flask==3.1.0",
 ]
 
 [[tool.uv.index]]
