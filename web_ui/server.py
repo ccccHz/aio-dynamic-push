@@ -40,7 +40,9 @@ def create_app(task_store: TaskStore) -> Flask:
                 'enable_living_check': task.enable_living_check,
                 'intervals_second': task.intervals_second,
                 'begin_time': task.begin_time,
-                'end_time': task.end_time
+                'end_time': task.end_time,
+                'push_list': task.target_push_name_list
+                
             }
             result.append(task_info)
         return jsonify(result)

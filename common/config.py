@@ -6,7 +6,7 @@ from common.logger import log
 
 
 class ConfigReaderForYml(object):
-    def __init__(self, config_file_name="config.final.yml"):
+    def __init__(self, config_file_name="config.yml"):
         config_file_path = os.path.join(os.getcwd(), config_file_name)
         if not os.path.exists(config_file_path):
             raise FileNotFoundError(f"No such file: {config_file_name}")
